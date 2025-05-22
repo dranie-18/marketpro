@@ -1,0 +1,72 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const categories = [
+  { 
+    name: 'Properti',
+    icon: '🏠',
+    description: 'Rumah, Apartemen, Tanah, dan properti lainnya',
+    subcategories: ['Rumah', 'Apartemen', 'Tanah', 'Ruko', 'Kos']
+  },
+  { 
+    name: 'Kendaraan',
+    icon: '🚗',
+    description: 'Mobil, Motor, dan kendaraan lainnya',
+    subcategories: ['Mobil', 'Motor', 'Aksesoris', 'Suku Cadang']
+  },
+  { 
+    name: 'Elektronik',
+    icon: '📱',
+    description: 'Handphone, Laptop, dan elektronik lainnya',
+    subcategories: ['Handphone', 'Laptop', 'Kamera', 'Audio', 'TV']
+  },
+  { 
+    name: 'Fashion',
+    icon: '👕',
+    description: 'Pakaian, Sepatu, Tas, dan aksesoris fashion',
+    subcategories: ['Pakaian Pria', 'Pakaian Wanita', 'Sepatu', 'Tas', 'Aksesoris']
+  },
+  { 
+    name: 'Hobi & Olahraga',
+    icon: '⚽',
+    description: 'Peralatan olahraga, koleksi, dan hobi',
+    subcategories: ['Olahraga', 'Musik', 'Buku', 'Mainan', 'Koleksi']
+  },
+  { 
+    name: 'Rumah Tangga',
+    icon: '🏠',
+    description: 'Furniture, Peralatan Dapur, dan kebutuhan rumah',
+    subcategories: ['Furniture', 'Peralatan Dapur', 'Dekorasi', 'Perlengkapan']
+  }
+];
+---
+
+<Layout
+  title="Kategori"
+  description="Jelajahi berbagai kategori produk di Marketpro. Temukan properti, kendaraan, elektronik, fashion, hobi, dan kebutuhan rumah tangga."
+>
+  <main class="container mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold mb-8">Kategori</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {categories.map(category => (
+        <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-3">{category.icon}</span>
+            <h2 class="text-xl font-bold">{category.name}</h2>
+          </div>
+          <p class="text-gray-600 mb-4">{category.description}</p>
+          <ul class="space-y-2">
+            {category.subcategories.map(sub => (
+              <li>
+                <a href={`/kategori/${category.name.toLowerCase()}/${sub.toLowerCase()}`} class="text-blue-600 hover:text-blue-800">
+                  {sub}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Hubungi Kami"
+  description="Hubungi tim Marketpro untuk bantuan dan informasi lebih lanjut tentang platform jual beli online kami."
+>
+  <main class="container mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold mb-8">Hubungi Kami</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div>
+        <h2 class="text-2xl font-bold mb-4">Informasi Kontak</h2>
+        <div class="space-y-4">
+          <p>
+            <strong>Alamat:</strong><br />
+            Gedung Marketpro<br />
+            Jl. Sudirman No. 123<br />
+            Jakarta Pusat, 10220
+          </p>
+          <p>
+            <strong>Email:</strong><br />
+            info@marketpro.id
+          </p>
+          <p>
+            <strong>Telepon:</strong><br />
+            (021) 1234-5678
+          </p>
+          <p>
+            <strong>Jam Operasional:</strong><br />
+            Senin - Jumat: 09:00 - 17:00 WIB
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold mb-4">Kirim Pesan</h2>
+        <form class="space-y-4">
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700">Nama</label>
+            <input type="text" id="name" name="name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+            <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
+          </div>
+          <div>
+            <label for="subject" class="block text-sm font-medium text-gray-700">Subjek</label>
+            <input type="text" id="subject" name="subject" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-medium text-gray-700">Pesan</label>
+            <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+          </div>
+          <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">
+            Kirim Pesan
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,155 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  return [
+    {params: {category: 'properti'}},
+    {params: {category: 'kendaraan'}},
+    {params: {category: 'elektronik'}},
+    {params: {category: 'fashion'}},
+    {params: {category: 'hobi'}},
+    {params: {category: 'rumah-tangga'}}
+  ];
+}
+
+const { category } = Astro.params;
+
+const categoryData = {
+  properti: {
+    title: 'Properti',
+    description: 'Temukan properti impian Anda. Rumah, apartemen, tanah, dan properti lainnya.',
+    subcategories: ['Rumah', 'Apartemen', 'Tanah', 'Ruko', 'Kos']
+  },
+  kendaraan: {
+    title: 'Kendaraan',
+    description: 'Jual beli mobil, motor, dan kendaraan lainnya.',
+    subcategories: ['Mobil', 'Motor', 'Aksesoris', 'Suku Cadang']
+  },
+  elektronik: {
+    title: 'Elektronik',
+    description: 'Berbagai macam elektronik dari handphone hingga laptop.',
+    subcategories: ['Handphone', 'Laptop', 'Kamera', 'Audio', 'TV']
+  },
+  fashion: {
+    title: 'Fashion',
+    description: 'Pakaian, sepatu, tas, dan aksesoris fashion terbaru.',
+    subcategories: ['Pakaian Pria', 'Pakaian Wanita', 'Sepatu', 'Tas', 'Aksesoris']
+  },
+  hobi: {
+    title: 'Hobi & Olahraga',
+    description: 'Peralatan olahraga, musik, dan hobi lainnya.',
+    subcategories: ['Olahraga', 'Musik', 'Buku', 'Mainan', 'Koleksi']
+  },
+  'rumah-tangga': {
+    title: 'Rumah Tangga',
+    description: 'Kebutuhan rumah tangga dari furniture hingga peralatan dapur.',
+    subcategories: ['Furniture', 'Peralatan Dapur', 'Dekorasi', 'Perlengkapan']
+  }
+}[category];
+
+const mockListings = [
+  {
+    title: 'Contoh Produk 1',
+    price: 'Rp 1.000.000',
+    location: 'Jakarta Selatan',
+    image: 'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg'
+  },
+  {
+    title: 'Contoh Produk 2',
+    price: 'Rp 2.500.000',
+    location: 'Jakarta Barat',
+    image: 'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg'
+  },
+  {
+    title: 'Contoh Produk 3',
+    price: 'Rp 3.750.000',
+    location: 'Jakarta Timur',
+    image: 'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg'
+  }
+];
+---
+
+<Layout
+  title={categoryData.title}
+  description={categoryData.description}
+>
+  <main class="container mx-auto px-4 py-12">
+    <div class="flex items-center justify-between mb-8">
+      <h1 class="text-3xl font-bold">{categoryData.title}</h1>
+      <a href="/jual" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">
+        Pasang Iklan
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="md:col-span-1">
+        <div class="bg-white p-4 rounded-lg shadow-sm">
+          <h2 class="font-bold text-lg mb-4">Filter</h2>
+          
+          <div class="space-y-4">
+            <div>
+              <h3 class="font-medium mb-2">Subkategori</h3>
+              <div class="space-y-2">
+                {categoryData.subcategories.map(sub => (
+                  <label class="flex items-center">
+                    <input type="checkbox" class="rounded text-blue-600 focus:ring-blue-500" />
+                    <span class="ml-2">{sub}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 class="font-medium mb-2">Kondisi</h3>
+              <div class="space-y-2">
+                <label class="flex items-center">
+                  <input type="checkbox" class="rounded text-blue-600 focus:ring-blue-500" />
+                  <span class="ml-2">Baru</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="rounded text-blue-600 focus:ring-blue-500" />
+                  <span class="ml-2">Bekas</span>
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="font-medium mb-2">Rentang Harga</h3>
+              <div class="space-y-2">
+                <input
+                  type="text"
+                  placeholder="Harga Minimum"
+                  class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                />
+                <input
+                  type="text"
+                  placeholder="Harga Maksimum"
+                  class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:col-span-3">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {mockListings.map(listing => (
+            <a href="#" class="bg-white rounded-lg shadow-sm hover:shadow-md">
+              <img
+                src={listing.image}
+                alt={listing.title}
+                class="w-full h-48 object-cover rounded-t-lg"
+              />
+              <div class="p-4">
+                <h3 class="font-medium mb-2">{listing.title}</h3>
+                <p class="text-lg font-bold text-blue-600 mb-1">{listing.price}</p>
+                <p class="text-sm text-gray-500">{listing.location}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProductForm from '../components/ProductForm';
+---
+
+<Layout
+  title="Pasang Iklan"
+  description="Pasang iklan Anda secara gratis di Marketpro. Jual berbagai produk dari aksesoris hingga mobil dan rumah dengan mudah dan cepat."
+>
+  <main class="container mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold mb-8">Pasang Iklan</h1>
+    <div class="max-w-2xl mx-auto">
+      <ProductForm client:load />
+    </div>
+  </main>
+</Layout>
